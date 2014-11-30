@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib import admin
 
 class Event(models.Model):
     title = models.CharField(max_length=30)
@@ -8,7 +9,7 @@ class Meeting(models.Model):
     event = models.ForeignKey('Event')
     datetime = models.DateTimeField()
     title = models.CharField(max_length=30)
-    description = models.TextFied()
+    description = models.TextField()
 
 class EventAttachment(models.Model):
     event = models.ForeignKey('Event')
