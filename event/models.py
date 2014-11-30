@@ -1,9 +1,14 @@
 from django.db import models
 from django.contrib import admin
+from django.contrib.auth.models import User
 
 class Event(models.Model):
     title = models.CharField(max_length=30)
     description = models.TextField()
+    owner = models.ForeignKey(User, null=True)
+
+    def __str__(self):
+        return self.title
 
 class Meeting(models.Model):
     event = models.ForeignKey('Event')
