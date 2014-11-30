@@ -7,7 +7,7 @@ class Event(models.Model):
 
 class Meeting(models.Model):
     event = models.ForeignKey('Event')
-    datetime = models.DateTimeField()
+    datetime = models.DateTimeField('date and time')
     title = models.CharField(max_length=30)
     description = models.TextField()
 
