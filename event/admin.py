@@ -1,5 +1,6 @@
 from django.contrib import admin
 from event.models import Event, Meeting, EventAttachment
+from poll.models import Submitting
 
 class MeetingInline(admin.StackedInline):
     fieldsets = [
@@ -17,10 +18,31 @@ class MeetingInline(admin.StackedInline):
 class EventAttachmentInline(admin.StackedInline):
     model = EventAttachment
 
+class SubmittedPollAdmin(admin.TabularInline):
+    model = Submitting
+
+    def get_readonly_fields(self, request, obj=None):
+        fields = ['poll', 'user', 'answer']
+        return [f.name for f in self.model._meta.fields if f.name in fields]
+    
+    def has_add_permission(self, request):
+        return False
+
+    def has_delete_permission(self, request, obj=None):
+        return request.user.is_superuser
+
+    def formfield_for_foreignkey(self, db_field, request, **kwargs):
+        kwargs["queryset"] = Submitting.objects.filter(
+            event__id=db_field.primary_key
+            ).order_by('poll')
+
+        return super(SubmittedPollAdmin, self).formfield_for_foreignkey(
+            db_field, request, **kwargs)
+
 class EventAdmin(admin.ModelAdmin):
     fields = ['title', 'description']
     list_display = ['title', 'owner']
-    inlines = [MeetingInline, EventAttachmentInline]
+    inlines = [MeetingInline, EventAttachmentInline, SubmittedPollAdmin]
 
     def save_model(self, request, obj, form, change):
         obj.owner = request.user
