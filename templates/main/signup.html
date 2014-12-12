@@ -1,38 +1,44 @@
-{% extends "base.html" %}
+{% extends "public_base.html" %}
 
-{% block body %}
-{% if errors %}
-<p>C'è stato un errore. Riprovare più tardi.</p>
-{% endif %}
+{% block content %}
 
-<form method="POST" action="{% url 'signup' %}">
+<form method="POST" action="{% url 'signup' %}" role="form"
+  onsubmit="return checkForm(this);"
+  class="form-signup form-horizontal">
   {% csrf_token %}
-  <table>
-    <tr>
-      <td>Username</td>
-      <td><input name="username"></td>
-    </tr>
-    <tr>
-      <td>Email</td>
-      <td><input name="email"></td>
-    </tr>
-    <tr>
-      <td>Nome</td>
-      <td><input name="first_name"></td>
-    </tr>
-    <tr>
-      <td>Cognome</td>
-      <td><input name="last_name"></td>
-    </tr>
-    <tr>
-      <td>Password</td>
-      <td><input name="password"></td>
-    </tr>
-    <tr>
-      <td>Conferma password</td>
-      <td><input name="password_confirm"></td>
-    </tr>
-  </table>
-  <input type="submit" value="Registrati">
+  <h2>Registrati</h2>
+  {% if errors %}
+  <div class="alert alert-danger">
+    L'email inserita risulta già utilizzata.
+  </div>
+  {% endif %}
+  <div class="row">
+    <div class="col-md-6">
+      <label class="control-label"><h4>Nome</h4></label>
+      <input name="first_name" class="form-control" 
+        placeholder="es: Mario" required>
+    </div>
+    <div class="col-md-6">
+      <label class="control-label"><h4>Cognome</h4></label>
+      <input name="last_name" class="form-control"
+        placeholder="es: Rossi" required>
+    </div>
+  </div>
+  <div class="control-group">
+    <label class="control-label"><h4>Email</h4></label>
+    <input class="form-control" type="email" name="username" required
+      placeholder="es: mario.rossi@email.com" autofocus>
+  </div>
+  <div class="control-group">
+    <label class="control-label"><h4>Password</h4></label>
+    <input name="password" class="form-control" type="password"
+      placeholder="Password" pattern="[a-zA-Z0-9]{6,}"
+      onchange="form.password_confirm.pattern = this.pattern" required>
+    <input name="password_confirm" class="form-control" type="password"
+      placeholder="Conferma la password" required>
+  </div>
+  <button class="btn btn-lg btn-primary btn-block" type="submit">
+    Registrati
+  </button>
 </form>
 {% endblock %}
