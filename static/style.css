@@ -15,6 +15,9 @@ body {
   margin: 0 auto;
   color: white;
 }
+.form-signin h2 {
+  text-align: center;
+}
 .form-signin .form-signin-heading,
 .form-signin .checkbox {
   margin-bottom: 10px;
