@@ -1,6 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from event.models import Event, Joining
+from poll.models import Submitting
 
 @login_required(login_url='/login/')
 def get_all(request):
@@ -45,4 +46,14 @@ def get_event(request, event):
 
 @login_required(login_url='/login/')
 def join(request, event):
-    pass
+    if len(Joining.objects.filter(user=request.user, event__pk=event)) != 0:
+        return redirect('event', event=event)
+    event = Event.objects.get(pk=event)
+    if event.poll:
+        if len(Submitting.objects.filter(
+            user=request.user,
+            event=event
+            )) == 0:
+            return redirect('poll', poll=event.poll.id, event=event.id)
+    Joining.objects.create(event=event, user=request.user)
+    return redirect('event', event=event.id)
