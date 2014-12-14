@@ -29,15 +29,15 @@
         </li>
         <li data-toggle="collapse" data-target="#projects"
           class="collapsed">
-          <a href="{% url 'index' %}">
+          <a href="#">
             <i class="fa fa-cubes fa-lg"></i>
             Progetti
             <span class="arrow"></span>
           </a>
         </li>
         <ul class="sub-menu collapse" id="projects">
-          <li><a href="#">Lista progetti</a></li>
-          <li><a href="#">I tuoi progetti</a></li>
+          <li><a href="{% url 'event_list' %}">Lista progetti</a></li>
+          <li><a href="{% url 'event_list_joined' %}">I tuoi progetti</a></li>
         </ul>
       </ul>
 

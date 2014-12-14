@@ -1,0 +1,31 @@
+{% extends "private_base.html" %}
+
+{% block content %}
+<div class="panel panel-default"><div class="panel-body">
+  {% if joined %}
+    <h2>Progetti ai quali partecipi</h2>
+  {% else %}
+    <h2>Progetti ai quali puoi partecipare</h2>
+  {% endif %}
+  <hr>
+  {% if not events %}
+    <div class="alert alert-info" role="alert">
+      Non ci sono eventi disponibili in questa sezione
+    </div>
+  {% endif %}
+  {% for event in events %}
+    {% if forloop.counter0|divisibleby:2 %}<div class="row">{% endif %}
+      <div class="col-md-6">
+        <h4><i class="fa fa-cube"></i> {{ event.title }}</h4>
+        <div class="subsection">
+          {% if event.description %}
+            {{ event.description|safe }}
+          {% else %}
+            <p>Non è presente alcuna descrizione per questo progetto</p>
+          {% endif %}
+        </div>
+      </div>
+    {% if forloop.counter|divisibleby:2 %}</div>{% endif %}
+  {% endfor %}
+</div>
+{% endblock %}
