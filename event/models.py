@@ -21,3 +21,8 @@ class EventAttachment(models.Model):
     event = models.ForeignKey('Event')
     attachment = models.FileField()
     datetime_added = models.DateTimeField(auto_now=True)
+
+class Joining(models.Model):
+    event = models.ForeignKey('Event')
+    user = models.ForeignKey(User)
+    accepted = models.BooleanField(default=False)
