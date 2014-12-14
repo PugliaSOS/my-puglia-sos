@@ -2,6 +2,29 @@
 
 {% block content %}
 <div class="panel panel-default"><div class="panel-body">
-    <h2>detail</h2>
+    <h2>{{ event.title }}</h2>
+    <hr>
+    {% if not event.description %}
+      <div class="alert alert-info">
+        Non è presente alcuna descrizione per questo evento
+      </div>
+    {% endif %}
+    {{ event.description|safe }}
+    <div class="row">
+      <div class="col-md-3 col-md-offset-9">
+        {% if not accepted %}
+          {% if joined %}
+            <button class="btn btn-primary btn-block disabled">
+              Richiesta inviata
+            </button>
+          {% else %}
+            <a class="btn btn-primary btn-block"
+              href="{% url 'join_event' event.id %}">
+              Richiedi di partecipare
+            </a>
+          {% endif %}
+        {% endif %}
+      </div>
+    </div>
 </div>
 {% endblock %}

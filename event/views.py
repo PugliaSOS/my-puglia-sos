@@ -26,16 +26,21 @@ def get_joined(request):
 @login_required(login_url='/login/')
 def get_event(request, event):
     res = Joining.objects.filter(user=request.user, event__pk=event)
-    joined = True
-    if len(event) == 0:
+    if len(res) == 0:
         res = Event.objects.get(pk=event)
         joined = False
+        accepted = None
+    else:
+        accepted = res[0].accepted
+        res = res[0].event
+        joined = True
     return render(
         request,
         "event/detail.html",
         {
             "event": res,
-            "joined": joined
+            "joined": joined,
+            "accepted": accepted
         })
 
 @login_required(login_url='/login/')
