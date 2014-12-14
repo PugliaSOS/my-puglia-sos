@@ -7,9 +7,7 @@ def get_all(request):
     # Return events user has not joined
     joined = Joining.objects.filter(
         user=request.user).values_list("event__pk", flat=True)
-    print(joined)
     events = Event.objects.exclude(pk__in=joined)
-    print(events)
     return render(request, "event/list.html", {"events": events})
 
 @login_required(login_url='/login/')
@@ -21,12 +19,19 @@ def get_joined(request):
         request,
         "event/list.html",
         {
-            "events": events, "joined": True
+            "events": events,
+            "joined": True
         })
 
 @login_required(login_url='/login/')
 def get_event(request, event):
-    pass
+    event = Joining.objects.get(user=request.user, event__pk=event)
+    return render(
+        request,
+        "event/detail.html",
+        {
+            "event": event
+        })
 
 @login_required(login_url='/login/')
 def join(request, event):
