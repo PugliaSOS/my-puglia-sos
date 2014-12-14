@@ -1,14 +1,11 @@
 {% extends 'private_base.html' %}
 
 {% block content %}
-
-{% if form.errors %}
-<p>{{ form.errors }}</p>
-{% endif %}
-
-<div class="panel panel-default"><div class="panel-body">
   <h2>Impostazioni</h1>
   <hr>
+  {% if form.errors %}
+  <p>{{ form.errors }}</p>
+  {% endif %}
   <div class="row">
     <div class="col-md-6">
       <h4><i class="fa fa-key"></i> Cambia password</h2>
@@ -28,5 +25,4 @@
       </div>
     </div>
   </div>
-</div></div>
 {% endblock %}

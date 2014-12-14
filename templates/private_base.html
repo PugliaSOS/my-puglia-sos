@@ -2,6 +2,8 @@
 {% block body %}
   {% include "menu.html" %}
   <div class="container container-right">
-    {% block content %}{% endblock %}
+    <div class="panel panel-default"><div class="panel-body">
+      {% block content %}{% endblock %}
+    </div></div>
   </div>
 {% endblock %}
