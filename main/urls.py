@@ -7,10 +7,11 @@ urlpatterns = patterns('',
     url(r'^login/$', auth_views.login, {'template_name': 'main/login.html'}),
     url(r'^logout/$', auth_views.logout_then_login, {'login_url': '/login/'},
         name='logout'),
-    url(r'^signup/$', views.signup, name='signup'),
-    url(r'^change_password/$', auth_views.password_change,
+    url(r'^password_change/$', auth_views.password_change,
         {
             'template_name': 'main/password.html',
             'post_change_redirect': '/'
-        }, name='change_password')
+        }, name='password_change'),
+    url(r'^signup/$', views.signup, name='signup'),
+    url(r'^settings/$', views.settings, name='settings')
 )

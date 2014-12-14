@@ -16,16 +16,18 @@
           </a>
         </li>
         <ul class="sub-menu collapse" id="user">
-          <li><a href="#">Cambia password</a></li>
-          <li><a href="#">Logout
+          <li><a href="{% url 'settings' %}">Impostazioni</a></li>
+          <li><a href="{% url 'logout' %}">Logout
           </a></li>
         </ul>
         <li>
-          <a href="#"><i class="fa fa-dashboard fa-lg"></i> Dashboard</a>
+          <a href="{% url 'index' %}">
+            <i class="fa fa-dashboard fa-lg"></i> Dashboard
+          </a>
         </li>
         <li data-toggle="collapse" data-target="#projects"
           class="collapsed">
-          <a href="#">
+          <a href="{% url 'index' %}">
             <i class="fa fa-cubes fa-lg"></i>
             Progetti
             <span class="arrow"></span>

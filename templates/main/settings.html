@@ -6,7 +6,7 @@
 <p>{{ form.errors }}</p>
 {% endif %}
 
-<form action="{% url 'change_password' %}" method="POST">
+<form action="{% url 'password_change' %}" method="POST">
   {% csrf_token %}
   <table>
     <tr>

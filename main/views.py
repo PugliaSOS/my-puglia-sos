@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import views as auth_views
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 
 def index(request):
@@ -23,3 +24,7 @@ def signup(request):
             )
         return redirect('/')
     return render(request, 'main/signup.html')
+
+@login_required(login_url='/login/')
+def settings(request):
+    return render(request, 'main/settings.html')
