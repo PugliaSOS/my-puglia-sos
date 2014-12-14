@@ -1,4 +1,26 @@
 {% extends "private_base.html" %}
 
 {% block content %}
+<div class="panel panel-default"><div class="panel-body">
+    <h2>Benvenuto/a {{ user.first_name }} {{ user.last_name }}!</h2>
+    <hr>
+    <div class="row">
+      <div class="col-md-6">
+        <h4><i class="fa fa-cubes"></i> Progetti a cui puoi partecipare</h4>
+        <div class="subsection">
+          {% if not projects %}
+            <p>Non ci sono progetti a cui puoi partecipare al momento.</p>
+          {% endif %}
+        </div>
+      </div>
+      <div class="col-md-6">
+        <h4><i class="fa fa-folder-open"></i> Progetti a cui partecipi</h4>
+        <div class="subsection">
+          {% if not your_projects %}
+            <p>Non ci sono progetti a cui sei iscritto.</p>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+</div></div>
 {% endblock %}
