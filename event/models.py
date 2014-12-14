@@ -19,7 +19,7 @@ class Meeting(models.Model):
 
 class EventAttachment(models.Model):
     event = models.ForeignKey('Event')
-    attachment = models.FileField()
+    attachment = models.CharField(max_length=255)
     datetime_added = models.DateTimeField(auto_now=True)
 
 class Joining(models.Model):
