@@ -1,6 +1,4 @@
-{% extends "base.html" %}
+{% extends "private_base.html" %}
 
-{% block body %}
-Welcome {{ user }}! <a href={% url 'logout' %}>logout</a></br>
-<a href="{% url 'change_password' %}">Cambia password</a>
+{% block content %}
 {% endblock %}
