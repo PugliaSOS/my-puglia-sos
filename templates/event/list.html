@@ -16,7 +16,9 @@
   {% for event in events %}
     {% if forloop.counter0|divisibleby:2 %}<div class="row">{% endif %}
       <div class="col-md-6">
-        <h4><i class="fa fa-cube"></i> {{ event.title }}</h4>
+        <a href="{% url 'event' event.id %}">
+          <h4><i class="fa fa-cube"></i> {{ event.title }}</h4>
+        </a>
         <div class="subsection">
           {% if event.description %}
             {{ event.description|safe }}
