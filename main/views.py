@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 
 def index(request):
     if request.user.is_authenticated():
-        return render(request, 'main/logged.html', {'user': request.user})
+        return render(request, 'main/dashboard.html', {'user': request.user})
     return redirect('login/')
 
 def signup(request):
