@@ -22,8 +22,7 @@ class SubmittedPollAdmin(admin.TabularInline):
     model = Submitting
 
     def get_readonly_fields(self, request, obj=None):
-        fields = ['poll', 'user', 'answer']
-        return [f.name for f in self.model._meta.fields if f.name in fields]
+        return ['poll', 'user', 'answer']
     
     def has_add_permission(self, request):
         return False
@@ -39,7 +38,7 @@ class SubmittedPollAdmin(admin.TabularInline):
         return super(SubmittedPollAdmin, self).formfield_for_foreignkey(
             db_field, request, **kwargs)
 
-class JoiningAdmin(admin.TabularInline):
+class JoiningRequestAdmin(admin.TabularInline):
     model = Joining
 
     def get_readonly_fields(self, request, obj=None):
