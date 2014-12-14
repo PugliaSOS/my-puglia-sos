@@ -6,22 +6,27 @@
 <p>{{ form.errors }}</p>
 {% endif %}
 
-<form action="{% url 'password_change' %}" method="POST">
-  {% csrf_token %}
-  <table>
-    <tr>
-      <td>Vecchia password</td>
-      <td><input type="password" name="old_password"></td>
-    </tr>
-    <tr>
-      <td>Nuova password</td>
-      <td><input type="password" name="new_password1"></td>
-    </tr>
-    <tr>
-      <td>Conferma nuova password</td>
-      <td><input type="password" name="new_password2"></td>
-    </tr>
-  </table>
-  <input type="submit" value="Cambia password">
-</form>
+<div class="panel panel-default"><div class="panel-body">
+  <h2>Impostazioni</h1>
+  <hr>
+  <div class="row">
+    <div class="col-md-6">
+      <h4><i class="fa fa-key"></i> Cambia password</h2>
+      <div class="subsection">
+        <form action="{% url 'password_change' %}" method="POST">
+          {% csrf_token %}
+          Inserisci la vecchia password
+          <input class="form-control" type="password" name="old_password">
+          Inserisci la nuova password
+          <input class="form-control" type="password" name="new_password1">
+          Conferma la nuova password
+          <input class="form-control" type="password" name="new_password2">
+          <button class="btn btn-primary btn-block" type="submit">
+            Cambia password
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div></div>
 {% endblock %}

@@ -168,4 +168,9 @@ body {
   margin: 0px;
   padding: 0px;
 }
-
+.subsection {
+  margin-left: 25px;
+}
+.subsection input {
+  margin-bottom: 15px;
+}
