@@ -3,12 +3,16 @@ body {
   padding-top: 40px;
   padding-bottom: 40px;
 }
-
 .pugliasos-header {
   background: url("pugliasos-header.jpg") center no-repeat;
   height: 200px;
 }
-
+.pugliasos-header-img {
+  text-align: center;
+}
+.pugliasos-header-img img {
+  max-height: 50px;
+}
 .form-signup {
   max-width: 530px;
 }
