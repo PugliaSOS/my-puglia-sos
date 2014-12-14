@@ -159,10 +159,10 @@ body {
   .nav-side-menu .menu-list .menu-content {
     display: block;
   }
-}
-.container-right {
-  padding-left: 300px;
-  margin-top: 30px;
+  .container-right {
+    padding-left: 300px;
+    margin-top: 30px;
+  }
 }
 body {
   margin: 0px;
@@ -170,6 +170,7 @@ body {
 }
 .subsection {
   margin-left: 25px;
+  margin-bottom: 30px;
 }
 .subsection input {
   margin-bottom: 15px;
