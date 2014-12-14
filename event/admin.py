@@ -2,7 +2,7 @@ from django.contrib import admin
 from event.models import Event, Meeting, EventAttachment, Joining
 from poll.models import Submitting
 
-class MeetingInline(admin.StackedInline):
+class MeetingInline(admin.TabularInline):
     fieldsets = [
         (
             None,
@@ -38,7 +38,7 @@ class SubmittedPollAdmin(admin.TabularInline):
         return super(SubmittedPollAdmin, self).formfield_for_foreignkey(
             db_field, request, **kwargs)
 
-class JoiningRequestAdmin(admin.TabularInline):
+class JoiningAdmin(admin.TabularInline):
     model = Joining
 
     def get_readonly_fields(self, request, obj=None):
@@ -53,8 +53,8 @@ class JoiningRequestAdmin(admin.TabularInline):
 class EventAdmin(admin.ModelAdmin):
     fields = ['title', 'description']
     list_display = ['title', 'owner']
-    inlines = [MeetingInline, EventAttachmentInline, SubmittedPollAdmin,
-               JoiningAdmin]
+    inlines = [JoiningAdmin, MeetingInline, EventAttachmentInline,
+               SubmittedPollAdmin]
 
     def save_model(self, request, obj, form, change):
         obj.owner = request.user
