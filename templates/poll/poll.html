@@ -1,0 +1,12 @@
+{% extends "private_base.html" %}
+{% block content %}
+<h2>{{ poll.name }}</h2>
+<hr>
+<form action="#" method="POST">
+  {% csrf_token %}
+  {{ poll.html|safe }}
+  <button class="btn btn-primary btn-block" type="submit">
+    Invia
+  </button>
+</form>
+{% endblock %}

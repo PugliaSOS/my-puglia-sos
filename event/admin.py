@@ -51,7 +51,7 @@ class JoiningAdmin(admin.TabularInline):
         return request.user.is_superuser
 
 class EventAdmin(admin.ModelAdmin):
-    fields = ['title', 'description']
+    fields = ['title', 'description', 'poll']
     list_display = ['title', 'owner']
     inlines = [JoiningAdmin, MeetingInline, EventAttachmentInline,
                SubmittedPollAdmin]
