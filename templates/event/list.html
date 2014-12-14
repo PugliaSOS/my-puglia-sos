@@ -21,7 +21,7 @@
         </a>
         <div class="subsection">
           {% if event.description %}
-            {{ event.description|safe }}
+            <div class="list-description">{{ event.description|safe }}</div>
           {% else %}
             <p>Non è presente alcuna descrizione per questo progetto</p>
           {% endif %}

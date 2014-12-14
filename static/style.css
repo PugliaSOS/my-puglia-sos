@@ -175,3 +175,6 @@ body {
 .subsection input {
   margin-bottom: 15px;
 }
+.list-description .long-description {
+  display: none;
+}
