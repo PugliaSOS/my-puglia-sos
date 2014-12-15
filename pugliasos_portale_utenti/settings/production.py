@@ -2,9 +2,9 @@ import os
 from pugliasos_portale_utenti.settings.base import *
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-TEMPLATE_DEBUG = False
+TEMPLATE_DEBUG = True
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
