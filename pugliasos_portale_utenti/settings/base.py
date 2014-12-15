@@ -9,6 +9,8 @@ https://docs.djangoproject.com/en/1.7/ref/settings/
 """
 import os
 
+PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '../..'))
+
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = '9+7pe+__7z&_^i%s6!q^@peah8p$9la%f7fxd*+87_+gwa$okh'
 
@@ -59,7 +61,17 @@ USE_L10N = True
 
 USE_TZ = True
 
-PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
 TEMPLATE_DIRS = (
-    os.path.join(PROJECT_ROOT, '../../templates').replace('\\', '/'),
+    os.path.join(PROJECT_ROOT, 'templates').replace('\\', '/'),
 )
+
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/1.7/howto/static-files/
+
+STATIC_URL = '/static/'
+STATIC_ROOT = 'staticfiles'
+STATICFILES_DIRS = (
+    os.path.join(PROJECT_ROOT, "static"),
+    )
+
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
