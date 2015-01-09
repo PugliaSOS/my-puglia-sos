@@ -1,1 +1,1 @@
-web: gunicorn pugliasos_portale_utenti.wsgi --log-file -
+web: gunicorn my_puglia_sos.wsgi --log-file -

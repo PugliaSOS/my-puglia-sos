@@ -1,5 +1,5 @@
 """
-Django settings for pugliasos_portale_utenti project.
+Django settings for my_puglia_sos project.
 
 For more information on this file, see
 https://docs.djangoproject.com/en/1.7/topics/settings/
@@ -44,9 +44,9 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
-ROOT_URLCONF = 'pugliasos_portale_utenti.urls'
+ROOT_URLCONF = 'my_puglia_sos.urls'
 
-WSGI_APPLICATION = 'pugliasos_portale_utenti.wsgi.application'
+WSGI_APPLICATION = 'my_puglia_sos.wsgi.application'
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.7/topics/i18n/
