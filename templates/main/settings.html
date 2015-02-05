@@ -13,7 +13,7 @@
         <form action="{% url 'password_change' %}" method="POST">
           {% csrf_token %}
           Inserisci la vecchia password
-          <input class="form-control" type="password" name="old_password">
+          <input type="password" name="old_password">
           Inserisci la nuova password
           <input class="form-control" type="password" name="new_password1">
           Conferma la nuova password
