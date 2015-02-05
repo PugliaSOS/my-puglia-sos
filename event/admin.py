@@ -31,9 +31,7 @@ class SubmittedPollAdmin(admin.TabularInline):
         return request.user.is_superuser
 
     def formfield_for_foreignkey(self, db_field, request, **kwargs):
-        kwargs["queryset"] = Submitting.objects.filter(
-            event__id=db_field.primary_key
-            ).order_by('poll')
+        kwargs["queryset"] = Submitting.objects.filter(event__id=db_field.primary_key).order_by('poll')
 
         return super(SubmittedPollAdmin, self).formfield_for_foreignkey(
             db_field, request, **kwargs)
@@ -53,8 +51,7 @@ class JoiningAdmin(admin.TabularInline):
 class EventAdmin(admin.ModelAdmin):
     fields = ['title', 'description', 'poll']
     list_display = ['title', 'owner']
-    inlines = [JoiningAdmin, MeetingInline, EventAttachmentInline,
-               SubmittedPollAdmin]
+    inlines = [JoiningAdmin, MeetingInline, EventAttachmentInline, SubmittedPollAdmin]
 
     def save_model(self, request, obj, form, change):
         obj.owner = request.user

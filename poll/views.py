@@ -18,11 +18,8 @@ def get_poll(request, poll, event):
         for k, v in request.POST.items():
             if k != 'csrfmiddlewaretoken':
                 s += "%s : %r\n" % (k, v)
-        Submitting.objects.create(
-            poll=Poll.objects.get(pk=poll),
-            user=request.user,
-            event=e,
-            answer=s)
+        Submitting.objects.create(poll=Poll.objects.get(pk=poll), user=request.user,
+            event=e, answer=s)
         # If poll was a requirement for joining an event, join
         if int(e.poll.id) == int(poll):
             return redirect('join_event', event=event)
