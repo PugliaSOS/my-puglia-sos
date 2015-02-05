@@ -51,3 +51,7 @@ def settings(request):
 def association_status(request):
     """ Association status page """
     pass
+
+@login_required(login_url='/login/')
+def status(request):
+    pass
