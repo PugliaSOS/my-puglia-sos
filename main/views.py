@@ -44,6 +44,11 @@ def settings(request):
 
 
 @login_required(login_url='/login/')
+def change_profile(request):
+    pass
+
+
+@login_required(login_url='/login/')
 def association_status(request):
     """ Association status page """
     pass

@@ -7,13 +7,30 @@
   <p>{{ form.errors }}</p>
   {% endif %}
   <div class="row">
-    <div class="col-md-6">
+      
+      <div class="col-md-6"> <!-- NOME UTENTE -->
+      <h4><i class="fa fa-key"></i> Cambia nome utente</h2>
+      <div class="subsection">
+        <form action="{% url 'change_profile' %}" method="POST">
+          {% csrf_token %}
+          Inserisci il vecchio nome utente
+          <input class="form-control" type="text" name="old_username">
+          Inserisci il nuovo nome utente
+          <input class="form-control" type="text" name="new_username">
+          <button class="btn btn-primary btn-block" type="submit">
+            Cambia nome utente
+          </button>
+        </form>
+      </div>
+      </div>
+
+      <div class="col-md-6"> <!-- PASSWORD -->
       <h4><i class="fa fa-key"></i> Cambia password</h2>
       <div class="subsection">
         <form action="{% url 'password_change' %}" method="POST">
           {% csrf_token %}
           Inserisci la vecchia password
-          <input type="password" name="old_password">
+          <input class="form-control" type="password" name="old_password">
           Inserisci la nuova password
           <input class="form-control" type="password" name="new_password1">
           Conferma la nuova password
