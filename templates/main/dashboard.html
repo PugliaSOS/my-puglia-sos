@@ -7,6 +7,12 @@
     <div class="col-md-6">
       <h4><i class="fa fa-cubes"></i> Progetti a cui puoi partecipare</h4>
       <div class="subsection">
+      {% for project in projects %}
+  <div class="list-description">{{ project.description|safe }}</div>
+{% endfor %}
+{% for project in projects %}
+  <div class="list-description">{{ project.description|safe }}</div>
+{% endfor %}
         {% if not projects %}
           <p>Non ci sono progetti a cui puoi partecipare al momento.</p>
         {% endif %}
@@ -15,6 +21,9 @@
     <div class="col-md-6">
       <h4><i class="fa fa-folder-open"></i> Progetti a cui partecipi</h4>
       <div class="subsection">
+      {% for project in your_projects %}
+  <div class="list-description">{{ project.description|safe }}</div>
+{% endfor %}
         {% if not your_projects %}
           <p>Non ci sono progetti a cui sei iscritto.</p>
         {% endif %}
