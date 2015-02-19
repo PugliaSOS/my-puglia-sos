@@ -1,28 +1,26 @@
 {% extends "private_base.html" %}
 
 {% block content %}
-  <h2>{{ event.title }}</h2>
-  <hr>
-  {% if not event.description %}
-    <div class="alert alert-info">
-      Non è presente alcuna descrizione per questo evento
-    </div>
-  {% endif %}
+<h2>{{ event.title }}</h2>
+{% if accepted %} <i class="fa fa-sign-in"></i> {% endif %}
+<hr>
+{% if not event.description %}
+<div class="alert alert-info"> Non è presente alcuna descrizione per questo evento </div>
+{% endif %}
   {{ event.description|safe }}
-  <div class="row">
-    <div class="col-md-3 col-md-offset-9">
-      {% if not accepted %}
-        {% if joined %}
-          <button class="btn btn-primary btn-block disabled">
-            Richiesta inviata
-          </button>
-        {% else %}
-          <a class="btn btn-primary btn-block"
-            href="{% url 'join_event' event.id %}">
-            Richiedi di partecipare
-          </a>
+<div class="row">
+  <div class="col-md-3 col-md-offset-9">
+  {% if accepted %} 
+    <!-- codice html con il bottone "rimuovi iscrizione" -->
+    <button class="btn btn-primary btn-block disabled"> Rimuovi iscrizione </button>
+    {% else %} 
+    <!-- vecchio contenuto di {% if not accepted %} --> 
+    	{% if joined %}
+    <button class="btn btn-primary btn-block disabled"> Richiesta inviata </button>
+    {% else %}
+    <a class="btn btn-primary btn-block" href="{% url 'join_event' event.id %}"> Richiedi di partecipare </a>
         {% endif %}
-      {% endif %}
+  {% endif %}
     </div>
-  </div>
-{% endblock %}
+</div>
+{% endblock %} 
