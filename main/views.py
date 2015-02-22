@@ -10,10 +10,10 @@ def index(request):
     Index page
     Return dashboard if authenticated, else login page.
     """
-	
-	# Get the list of events the user joined, and get the array of pks
+
+    # Get the list of events the user joined, and get the array of pks
     joined = Joining.objects.filter(
-        user=request.user).values_list("event__pk", flat=True)
+        user=request.user.id).values_list("event__pk", flat=True)
 
     # Get all events whose pk is not in joined
     events_joined = Event.objects.exclude(pk__in=joined)
