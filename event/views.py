@@ -84,3 +84,18 @@ def join(request, event):
     # Now user can join event
     Joining.objects.create(event=event, user=request.user)
     return redirect('event', event=event.id)
+
+
+@login_required(login_url='/login/')
+def unjoin(request, event):
+    """ Join event """
+
+    # Redirect if user did not join
+    if len(Joining.objects.filter(user=request.user, event__pk=event)) == 0:
+        return redirect('index')
+
+    event = Event.objects.get(pk=event)
+
+    # Now user can join event
+    Joining.objects.get(event=event, user=request.user).delete()
+    return redirect('index')
