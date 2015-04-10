@@ -54,10 +54,13 @@ def settings(request):
     """ Settings page """
     return render(request, 'main/settings.html')
 
-
 @login_required(login_url='/login/')
 def change_profile(request):
-    pass
+    if request.method == 'POST':   
+        request.user.first_name = request.POST['first_name']
+        request.user.last_name = request.POST['last_name']
+        request.user.save()
+    return render(request, 'main/settings.html') 
 
 
 @login_required(login_url='/login/')

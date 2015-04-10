@@ -13,8 +13,10 @@
       <div class="subsection">
         <form action="{% url 'change_profile' %}" method="POST">
           {% csrf_token %}
-          Inserisci il nuovo nome utente
-          <input class="form-control" type="text" name="new_username">
+          Inserisci Nome
+          <input class="form-control" type="text" name="first_name">
+          Inserisci Cognome
+          <input class="form-control" type="text" name="last_name">
           <button class="btn btn-primary btn-block" type="submit">
             Cambia nome utente
           </button>
