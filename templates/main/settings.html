@@ -13,8 +13,6 @@
       <div class="subsection">
         <form action="{% url 'change_profile' %}" method="POST">
           {% csrf_token %}
-          Inserisci il vecchio nome utente
-          <input class="form-control" type="text" name="old_username">
           Inserisci il nuovo nome utente
           <input class="form-control" type="text" name="new_username">
           <button class="btn btn-primary btn-block" type="submit">
