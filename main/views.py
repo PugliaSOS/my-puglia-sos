@@ -16,10 +16,10 @@ def index(request):
         user=request.user.id).values_list("event__pk", flat=True)
 
     # Get all events whose pk is not in joined
-    events_joined = Event.objects.exclude(pk__in=joined)
+    events_joined = Event.objects.filter(pk__in=joined)
 
     # Get all events whose pk is in joined
-    events_notjoined = Event.objects.filter(pk__in=joined)
+    events_notjoined = Event.objects.exclude(pk__in=joined)
 	
 	
     if request.user.is_authenticated():
