@@ -8,6 +8,7 @@
       <h4><i class="fa fa-cubes"></i> Progetti a cui puoi partecipare</h4>
       <div class="subsection">
       {% for project in projects %}
+  <h4>{{ project.title }}</h4>
   <div class="list-description">{{ project.description|safe }}</div>
 {% endfor %}
 {% for project in projects %}
@@ -22,6 +23,7 @@
       <h4><i class="fa fa-folder-open"></i> Progetti a cui partecipi</h4>
       <div class="subsection">
       {% for project in your_projects %}
+  <h4>{{ project.title }}</h4>
   <div class="list-description">{{ project.description|safe }}</div>
 {% endfor %}
         {% if not your_projects %}
