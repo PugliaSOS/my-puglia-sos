@@ -11,9 +11,6 @@
   <h4>{{ project.title }}</h4>
   <div class="list-description">{{ project.description|safe }}</div>
 {% endfor %}
-{% for project in projects %}
-  <div class="list-description">{{ project.description|safe }}</div>
-{% endfor %}
         {% if not projects %}
           <p>Non ci sono progetti a cui puoi partecipare al momento.</p>
         {% endif %}
