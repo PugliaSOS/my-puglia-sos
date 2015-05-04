@@ -1,0 +1,17 @@
+{% extends 'private_base.html' %}
+
+{% block content %}
+    <h2> Stati associativi </h2>
+    <table>
+        <tr>
+            <th> Anno </th>
+            <th> Stato </th>
+        </tr>
+        {% for s in status_list %}
+            <tr>
+                <td> {{ s.year }}</td>
+                <td> {{ s.status }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}
