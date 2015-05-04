@@ -26,3 +26,16 @@ class Joining(models.Model):
     event = models.ForeignKey('Event')
     user = models.ForeignKey(User)
     accepted = models.BooleanField(default=False)
+
+class Post(models.Model):
+    event = models.ForeignKey('Event')
+    title = models.CharField(max_length=30)        
+    datetime = models.DateTimeField('date and time')
+    text = models.TextField()
+    user = models.ForeignKey(User)
+
+class Comment(models.Model):
+    post = models.ForeignKey('Post')
+    datetime = models.DateTimeField('date and time')
+    text = models.TextField()
+    user = models.ForeignKey(User)
