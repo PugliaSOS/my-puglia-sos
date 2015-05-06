@@ -20,8 +20,8 @@ def index(request):
 
     # Get all events whose pk is in joined
     events_notjoined = Event.objects.exclude(pk__in=joined)
-	
-	
+
+
     if request.user.is_authenticated():
         return render(request, 'main/dashboard.html', {'user': request.user, "projects":events_notjoined, "your_projects":events_joined})
     return redirect('login/')
@@ -35,7 +35,7 @@ def signup(request):
     For GET requests: show signup page if not authenitcated, else redirect to
     index.
     """
-	
+
     if request.user.is_authenticated():
         return redirect('/')
     if request.method == 'POST':
@@ -56,18 +56,8 @@ def settings(request):
 
 @login_required(login_url='/login/')
 def change_profile(request):
-    if request.method == 'POST':   
+    if request.method == 'POST':
         request.user.first_name = request.POST['first_name']
         request.user.last_name = request.POST['last_name']
         request.user.save()
-    return render(request, 'main/settings.html') 
-
-
-@login_required(login_url='/login/')
-def association_status(request):
-    """ Association status page """
-    pass
-
-@login_required(login_url='/login/')
-def status(request):
-    pass
+    return render(request, 'main/settings.html')

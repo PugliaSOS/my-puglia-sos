@@ -15,5 +15,4 @@ urlpatterns = patterns('',
     url(r'^signup/$', views.signup, name='signup'),
     url(r'^change_profile/$', views.change_profile, name='change_profile'),
     url(r'^settings/$', views.settings, name='settings'),
-    url(r'^status/$', views.status, name='status')
 )
