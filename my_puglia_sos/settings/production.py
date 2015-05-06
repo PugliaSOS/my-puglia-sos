@@ -11,3 +11,9 @@ import dj_database_url
 DATABASES = {
     'default':  dj_database_url.config()
     }
+
+# Email settings
+EMAIL_HOST = "example@host.com"
+EMAIL_PORT = 1234
+EMAIL_HOST_USER = 'admin'
+EMAIL_HOST_PASSWORD = 'password'
