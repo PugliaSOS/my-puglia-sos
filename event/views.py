@@ -58,6 +58,7 @@ def get_event(request, event):
         request,
         "event/detail.html",
         {
+            "post": post,
             "event": res,
             "joined": joined,
             "accepted": accepted
