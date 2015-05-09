@@ -1,0 +1,10 @@
+{% extends 'private_base.html' %}
+
+{% block content %}
+    <h3> Lista soci </h3>
+    <ul>
+    {% for s in all_registred %}
+       <li> {{ s.first_name }} {{ s.last_name }}
+    {% end for %}
+    </ul>
+{% endblock %}
