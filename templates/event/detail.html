@@ -12,8 +12,12 @@
   <div class="col-md-3 col-md-offset-9">
   {% if accepted %} 
     <!-- codice html con il bottone "rimuovi iscrizione" -->    
+    
+    <ul class="btn btn-primary"> 
     {% for p in post %}
-    <ul class="btn btn-primary"> <li>{{ posts.text }}</li> </ul>
+        <li>{{ posts.text }}</li> 
+    {% endfor %}
+    </ul>
     <button class="btn btn-primary btn-block"> Rimuovi iscrizione </button>
 
     {% else %} 

@@ -51,7 +51,7 @@ def get_event(request, event):
         joined = False
         accepted = None
     else:
-        post = Post.objects.filter(event_pk=event)
+        posts = Post.objects.filter(event_pk=event)
         accepted = res[0].accepted
         res = res[0].event
         joined = True
@@ -60,7 +60,7 @@ def get_event(request, event):
         request,
         "event/detail.html",
         {
-            "posts": post,
+            "posts": posts,
             "event": res,
             "joined": joined,
             "accepted": accepted
