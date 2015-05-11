@@ -2,9 +2,7 @@
 
 {% block content %}
     <h3> Lista soci </h3>
-    <ul>
-    {% for s in all_registred %}
+    {% for s in all_registered %}
        <li> {{ s.first_name }} {{ s.last_name }}
-    {% end for %}
-    </ul>
+    {% endfor %}
 {% endblock %}

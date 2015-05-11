@@ -4,7 +4,7 @@ body {
   padding-bottom: 40px;
 }
 .pugliasos-header {
-  background: url("pugliasos-header.jpg") center no-repeat;
+  background: url("/static/images/pugliasos-header.jpg") center no-repeat;
   height: 200px;
 }
 .pugliasos-header-img {
