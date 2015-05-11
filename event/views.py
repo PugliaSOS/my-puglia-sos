@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
-from event.models import Event, Joining
+from event.models import Event, Joining, Post
 from poll.models import Submitting
 
 
@@ -41,8 +41,9 @@ def get_joined(request):
 @login_required(login_url='/login/')
 def get_event(request, event):
     """ Get a specific event """
-
+    
     res = Joining.objects.filter(user=request.user, event__pk=event)
+    
 
     # If user joined the event, res will be greater than 0
     if len(res) == 0:
@@ -50,6 +51,7 @@ def get_event(request, event):
         joined = False
         accepted = None
     else:
+        post = Post.objects.filter(event_pk=event)
         accepted = res[0].accepted
         res = res[0].event
         joined = True
@@ -58,7 +60,7 @@ def get_event(request, event):
         request,
         "event/detail.html",
         {
-            "post": post,
+            "posts": post,
             "event": res,
             "joined": joined,
             "accepted": accepted
