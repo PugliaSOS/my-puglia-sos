@@ -9,5 +9,5 @@ def get_registered(request):
 
 @login_required(login_url='/login/')
 def get_profile(request, user):
-    user_info=request.user
+    user_info = User.objects.get(pk=user)
     return render(request, 'social/userinfo.html', {'user_info':user_info})
