@@ -3,6 +3,6 @@
 {% block content %}
     <h3> Lista soci </h3>
     {% for s in all_registered %}
-       <li> {{ s.first_name }} {{ s.last_name }}
+       <li> {{ s.first_name }} {{ s.last_name }} <a href={% url 'user_info' s.pk %}> link socio </a>
     {% endfor %}
 {% endblock %}
