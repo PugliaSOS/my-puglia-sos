@@ -102,3 +102,8 @@ def unjoin(request, event):
     # Now user can join event
     Joining.objects.get(event=event, user=request.user).delete()
     return redirect('index')
+
+
+@login_required(login_url='/login/')
+def show_post(request,post):
+    """ Show Post """
