@@ -1,0 +1,10 @@
+{% extends "private_base.html" %}
+
+{% block content %}
+<h2>{{ posts.title }}</h2>
+{% if accepted %} <i class="fa fa-sign-in"></i> {% endif %}
+<hr>
+{% for p in post %}
+  <li>{{ posts.text }}</li> 
+  <li>{{ comments.text }}</li> 
+{% endblock %}

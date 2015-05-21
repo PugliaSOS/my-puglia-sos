@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
-from event.models import Event, Joining, Post
+from event.models import Event, Joining, Post, Comment
 from poll.models import Submitting
 
 
@@ -107,3 +107,14 @@ def unjoin(request, event):
 @login_required(login_url='/login/')
 def show_post(request,post):
     """ Show Post """
+    pass
+    
+    posts = Post.objects.filter(event_pk=event)
+    comments = Comment.objects.filter(event_pk=event)
+    return render(
+        request,
+        "event/posts.html",
+        {
+            "posts": posts,
+            "comments": comments, 
+        })
